@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/newproduct.css">
+</head>
+
+<body>
+    <div class="nav">
+        <div class="left">{{user}}'s Dashboard</div>
+        <div class="right">
+            <a href=""><button>Summary</button></a>
+            <a href="/"><button>Logout</button></a>
+        </div>
+        
+    </div>
+    <div class="area">
+        <form action="" method="POST">
+            <label for="">Book Name</label><input type="text" name="bname">
+            <label for="">Author Name</label><input type="text" name="aname">
+            <label for="">Content/Link</label><input type="text" name="content">
+            <input type="hidden" name="category" value="{{cat}}">
+            <input type="hidden" name="user" value="{{user}}">
+            <button type="submit" formaction="/addinv" id="save">Save</button>
+        </form>
+
+    </div>    
+
+
+</body>
+</html>

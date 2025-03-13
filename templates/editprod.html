@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/editprod.css">
+</head>
+
+<body>
+    <div class="nav">
+        <div class="left">{{user}}'s Dashboard</div>
+        <div class="right">
+            <a href=""><button>Summary</button></a>
+            <a href="/"><button>Logout</button></a>
+        </div>
+    </div>
+    <div class="create">
+        <form action="" method="POST">
+            <label for="">Current Product Name: {{pname}}</label>
+            <label for="">New Product Name</label><input type="text" name="newpname">
+            <label for="">Unit</label><input list="l1" name="unit">
+            <datalist id="l1">
+                <option value="Rs/Litre">
+                <option value="Rs/Kg">
+                <option value="Rs/gram">
+                <option value="Rs/item">
+                <option value="Rs/dozen">
+            </datalist>
+            <label for="">Rate</label><input type="text" name="rate">
+            <label for="">Quantity</label><input type="text" name="quantity">
+            <input type="hidden" name="user" value="{{user}}">
+            <input type="hidden" name="pname" value="{{pname}}">
+            <button type="submit" formaction="/editproduct">Edit</button>
+        </form>
+    </div>
+</body>
+
+</html>

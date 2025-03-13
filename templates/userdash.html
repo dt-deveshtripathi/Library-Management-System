@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/userdash.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <title>UserDash</title>
+  </head>
+
+  <body>
+    <div class="nav">
+      <div class="left">{{user}}'s Dashboard</div>
+      <div class="right">
+        <a href=""><button>Profile</button></a>
+        <form action="/userdash/{{user}}/mybooks" method="POST">
+          <input type="hidden" name="User" value="{{user}}" />
+          <button>My Books</button>
+        </form>
+
+        <a href="" class="current"><button>Books</button></a>
+
+        <a href="/"><button>Logout</button></a>
+      </div>
+    </div>
+    <div class="middle">
+      <div>
+        {%for i in q1%}
+        <div class="content">
+          <h2>{{i.CategoryName}}</h2>
+          <div class="area">
+            {%for j in q2%} {%if i.CategoryName == j.Category and j.Status ==
+            "Available"%}
+            <div class="item">
+              <p>{{j.BookName}} ({{j.Author}})</p>
+
+              <div class="bottom">
+                <form action="" method="POST">
+                  <input type="hidden" name="User" value="{{user}}" />
+                  <input type="hidden" name="BookName" value="{{j.BookName}}" />
+                  {%if 5 >= count %}
+                  <button type="submit" class="util" formaction="/requestb">
+                    Request
+                  </button>
+                  {%endif%}
+                </form>
+              </div>
+            </div>
+            {%endif%} {%endfor%}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="relative">
+        <form
+          method="POST"
+          action="{{ url_for('search') }}"
+          class="flex justify-end mb-4"
+        >
+          <input type="hidden" name="User" value="{{user}}" />
+          <input
+            type="text"
+            name="term"
+            placeholder="Search books..."
+            class="border p-2 mt-2 rounded-md"
+          />
+          <button
+            type="submit"
+            class="right-0 top-0 mt-2 bg-blue-500 text-white px-4 py-2 rounded-md"
+          >
+            Search
+          </button>
+        </form>
+        {%for i in books %} {%for j in q2%} {%if i.BookName == j.BookName %}
+        <div class="item2">
+          <p>{{j.BookName}} ({{j.Author}}) {{j.Category}}</p>
+          <div class="bottom">
+            <form action="" method="POST">
+              <input type="hidden" name="User" value="{{user}}" />
+              <input type="hidden" name="BookName" value="{{j.BookName}}" />
+              {%if 5 >= count %}
+              <button type="submit" class="util" formaction="/requestb">
+                Request
+              </button>
+              {%endif%}
+            </form>
+          </div>
+        </div>
+        {%endif%} {%endfor%} {%endfor%}
+      </div>
+    </div>
+  </body>
+</html>

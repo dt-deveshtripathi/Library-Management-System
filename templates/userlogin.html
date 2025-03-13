@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/userlogin.css">
+    <title>User</title>
+</head>
+
+<body>
+    <div class="logindetails">
+        <form action="" method="POST">
+            <label for="">User Name</label>
+            <input type="text" name="username" required>
+            <label for="">Password</label>
+            <input type="password" name="password" required>
+            <div class="butt">
+                <button type="submit">Login</button>
+                <button type="submit" formaction="/register">Register</button>
+            </div>
+            <div class="mess">
+                <span>
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                            {% if message == 'User registered! Please Login' %}
+                                <li id="success">{{ message }}</li>
+                            {% endif %}
+                            {% if message == 'Already registered! Please Login' %}
+                                <li id="failure">{{ message }}</li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                {% endwith %}
+                </span>
+            </div>
+
+
+
+        </form>
+    </div>
+
+
+</body>
+
+</html>

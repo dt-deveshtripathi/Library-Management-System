@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/cart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>UserDash</title>
+</head>
+
+<body>
+    <div class="nav">
+        <div class="left">{{user}}'s Dashboard</div>
+        <div class="right">
+            <a href=""><button>Profile</button></a>
+            <a href="/cart"><button>Cart</button></a>
+            <a href="/"><button>Logout</button></a>
+        </div>
+    </div>
+    <div class="dash">
+        {%for i in q1%}
+        <div class="content">
+            <div class="area">
+                <div class="item">
+                    <h3>{{i.ProductName}}</h3>
+                    <h3>Price : {{i.Price}}</h3>
+                    <h3>Price : {{i.Quantity}}</h3>
+                    <div>
+                        <form action="" method="POST">
+                            <button type="submit" formaction="/delcart">Delete</button>
+                            <input type="hidden" name="ProdName" value="{{i.ProductName}}">
+                            <input type="hidden" name="User" value="{{user}}">
+                        </form>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+        {% endfor %}
+        <form action="" method="POST">
+            <button type="submit" formaction="/bought">Buy</button>
+            <input type="hidden" name="User" value="{{user}}">
+        </form>
+    </div>
+
+</body>
+
+</html>

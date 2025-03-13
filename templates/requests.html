@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/requests.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <title>UserDash</title>
+  </head>
+
+  <body>
+    <div class="nav">
+      <div class="left">{{user}}'s Dashboard</div>
+      <div class="right">
+        <a href="/"><button>Logout</button></a>
+      </div>
+    </div>
+    <div>
+      {%for i in q1%} {%if i.Status == 'Requested' %}
+      <div class="item">
+        <h2>{{i.CategoryName}}</h2>
+        <p>{{i.BookName}} {{i.Author}} {{i.Owner}}</p>
+
+        <div class="bottom">
+          <form action="" method="POST">
+            <input type="hidden" name="User" value="{{user}}" />
+            <input type="hidden" name="BookName" value="{{i.BookName}}" />
+            <button type="submit" class="util" formaction="/allowb">
+              Allow</button
+            ><button type="submit" class="util" formaction="/rejectb">
+              Reject
+            </button>
+          </form>
+        </div>
+      </div>
+      {%endif%} {%endfor%}
+    </div>
+
+    <hr />
+
+    <div>
+      {%for i in q1%} {%if i.Status == 'Not Available' %}
+      <div class="item">
+        <h2>{{i.CategoryName}}</h2>
+
+        <p>{{i.BookName}} {{i.Author}} {{i.Owner}}</p>
+
+        <div class="bottom">
+          <form action="" method="POST">
+            <input type="hidden" name="User" value="{{user}}" />
+            <input type="hidden" name="BookName" value="{{i.BookName}}" />
+            <button type="submit" class="util" formaction="/revokeb">
+              Revoke
+            </button>
+          </form>
+        </div>
+      </div>
+      {%endif%} {%endfor%}
+    </div>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/editcat.css">
+</head>
+
+<body>
+    <div class="nav">
+        <div class="left">{{user}}'s Dashboard</div>
+        <div class="right">
+            <a href=""><button>Summary</button></a>
+            <a href="/"><button>Logout</button></a>
+        </div>
+    </div>
+    <div class="create">
+        <form action="" method="POST">
+            <label for="">Current Category Name: </label><label for="">{{cname}}</label>
+            <label for="">New Category Name</label><input type="text" name="newcname">
+            <input type="hidden" name="user" value="{{user}}">
+            <input type="hidden" name="cname" value="{{cname}}">
+            <button type="submit" formaction="/editcategory">Edit</button>
+        </form>
+    </div>
+</body>
+
+</html>

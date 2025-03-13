@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/managerdash.css">
+    <title>ManagerDash</title>
+</head>
+
+<body>
+    <div class="nav">
+        <div class="left">{{user}}'s Dashboard</div>
+        <div class="right">
+            <a href=""><button>Summary</button></a>
+            <form action="" method="POST">
+                <input type="hidden" name="user" value="{{user}}">
+                <button type="submit" formaction="/managerdash/{{user}}/requests">Requests</button>
+            </form>
+            <a href="/"><button>Logout</button></a>
+        </div>
+    </div>
+    <div class="dash">
+        <div class="area">
+            {%for i in q1 %}
+            <div class="item">
+                {{i.CategoryName}} {{i.Date}}
+                <div class="area2">
+                    {%for j in q2%}
+                        {%if i.CategoryName == j.Category%}
+                            <div class="item">
+                                <p>{{j.BookName}} ({{j.Author}})</p>
+                                <div class="manage">
+                                    <form action="" method="POST">
+                                        <input type="hidden"  name="BookName" value="{{j.BookName}}">
+                                        <input type="hidden" name="user" value="{{user}}">
+                                        <button type="submit" formaction="/editprod">Edit</button>
+                                        <button type="submit" formaction="/delprod">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        {%endif%}
+                    {%endfor%}
+                </div>
+                <div class="system">
+                    <form action="" method='POST' class="invadd">
+                        <input type="hidden" name="CatName" value="{{i.CategoryName}}">
+                        <input type="hidden" name="user" value="{{user}}">
+                        <button type="submit" formaction="/newproduct">+</button>
+                    </form>
+
+                    <form action="" method='POST' class="invedit">
+                        <input type="hidden" name="CatName" value="{{i.CategoryName}}">
+                        <input type="hidden" name="user" value="{{user}}">
+                        <div class="butt">
+                            <form action="" method='POST'>
+                                <input type="hidden"  name="CatName" value="{{i.CategoryName}}">
+                                <input type="hidden" name="user" value="{{user}}">
+                                <button type="submit" formaction="/editcat" class="options">Edit</button>
+                                <button type="submit" formaction="/delcat" class="options">Delete</button>
+                            </form>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="adding">
+        <form action="" method='POST' class="invadd">
+            <input type="hidden" name="user" value="{{user}}">
+            <button type="submit" formaction="/addcat">Add</button>
+        </form>
+    </div>
+
+
+</body>
+
+</html>

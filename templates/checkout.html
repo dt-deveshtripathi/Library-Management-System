@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="/static/checkout.css">
+</head>
+<body class="">
+    <div class="nav">
+        <div class="left">{{user}}'s Dashboard</div>
+        <div class="right">
+            <a href=""><button>Summary</button></a>
+            <a href="/"><button>Logout</button></a>
+        </div>
+    </div>
+    <div class="main">
+        <div class="hero">
+            {% set unitm = unit.split('/') %}
+            {% set quanm = '{:.2f}'.format(quan) %}
+            <div class="one">
+                <h1>Product Name : {{pname}}</h1>
+                <h1>Price : {{price}} {{unit}}</h1>
+                {%if quan == 1%}
+                    <h1>{{quanm}} {{unitm[1]}} available in stock</h1>
+                {%elif quan > 1%}
+                    <h1>{{quanm}} {{unitm[1]}}s available in stock</h1>
+                {%endif%}
+                <form action="" method="POST">
+                    {%if unitm[1] == 'item' %}
+                        <input type="number" name="Quan" max="{{quanm}}" min="1" placeholder="Type Quantity">
+                    {%else%}
+                        <input type="number" name="Quan" max="{{quanm}}" min="0.01" step="any" placeholder="Type Quantity">
+                    {%endif%}
+                    <input type="hidden" name="User" value="{{user}}">
+                    <input type="hidden" name="ProdName" value="{{pname}}">
+                    <button type="submit" formaction="/check">Checkout</button>
+                </form>
+            </div>
+            
+        
+        </div>
+    </div>
+    
+</body>
+</html>

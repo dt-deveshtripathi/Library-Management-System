@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/mybooks.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>UserDash</title>
+</head>
+
+<body>
+    <div class="nav">
+        <div class="left">{{user}}'s Dashboard</div>
+        <div class="right">
+            <!--<form>
+                <label for="divId">Search</label>
+                <input type="text" id="divId" name="divId">
+                <button type="submit">Go to Target Div</button>
+            </form>-->
+            <a href=""><button>Profile</button></a>
+                <!--<form action="" method="POST">
+                    <input type="hidden" name="User" value="{{user}}">
+                    <button type="submit" formaction="/cart">Cart</button>
+                </form>-->
+            <a href="" class = "current"><button>My Books</button></a>
+
+            <form action="/userdash/{{user}}/books" method="POST">
+                    <input type="hidden" name="User" value="{{user}}">
+                    <button>Books</button>
+            </form>
+            
+            
+   
+            <a href="/"><button>Logout</button></a>
+        </div>
+    </div>
+    <div> 
+        {%for i in q2%}
+            <div class="content">
+            {%if i.Owner == user and i.Status == 'Not Available'%}
+                <div class="area">
+                    <h2>{{i.Category}}</h2>
+                    <div class="item">
+                        <p>{{i.BookName}} {{i.Author}}</p>
+                        <a href="{{i.Link}}"> <button class="util">view</button> </a>
+                        <br>
+                        <form action="" method="POST">
+                            <input type="hidden" name="User" value="{{user}}">
+                            <input type="hidden" name="BookName" value="{{i.BookName}}">
+                            <button type="submit" class="util" formaction="/returnb">return</button>
+                        </form>
+                    </div>
+                </div>
+            {%endif%}
+            </div>
+        {%endfor%}
+    </div>
+</body>
+
+</html>
