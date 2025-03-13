@@ -1,0 +1,100 @@
+body {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    margin: 0;
+  }
+  
+  body:before {
+    content: "";
+    position: absolute;
+    background: url(./images/Blackberries.jpg);
+    background-size: cover;
+    z-index: -1;
+    height: 20%;
+    width: 20%;
+    transform: scale(5);
+    transform-origin: top left;
+    filter: blur(2px);
+  }
+  
+  .right button {
+    margin: 10px;
+    background-color: rgba(240, 240, 240, 0.65);
+    padding: 10px;
+    border: 0px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(49, 49, 49);
+  
+  }
+  
+  .right button:hover {
+    background-color: rgba(240, 240, 240, 1);
+    transform: translateY(5px);
+    transition: background-color, transform 0.3s;
+  }
+  
+  .nav {
+    width: 100%;
+    height: 10vh;
+    background-color: rgba(255, 255, 255, 0.6);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .left{
+    margin-left: 15px;
+  }
+  
+  .right{
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .dash {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 80%;
+    overflow-y: scroll;
+  }
+  
+  .content {
+    width: 85%;
+    margin: 20px;
+    border-radius: 10px;
+    background-color: rgba(0, 255, 255, 0.664);
+  }
+
+  .area{
+    display: flex;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+    border-radius: 5px;
+    width: 100%;
+  }
+  
+  .item {
+    background-color: rgb(255, 255, 255);
+    width: 80%;
+    height: 75px;
+    margin: 20px;
+    display: flex;
+    justify-content: space-between; 
+  }
+
+  h3{
+    color: black;
+  }
