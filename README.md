@@ -1,2 +1,2 @@
 # Library-Management-System
-![pin](https://github.com/DeveshTripathi/assets/6e46a36d-0667-46c3-a4eb-b128e61f69c1)
+![1](https://github.com/user-attachments/assets/c878e1aa-c512-4065-b0da-3ad5c096ba1a)
